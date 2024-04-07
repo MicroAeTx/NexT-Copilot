@@ -1,6 +1,7 @@
 # NexT-Copilot
 There are Chinese and English versions, and the English version is below
 使用例如LLama，LMstudio，OpenAI的GPT，谷歌的Gemini，Midjourney，DELL3这些AI应用的API甚至是直接在此项目上部署AI模型创建一个可以像Microsoft Copilot一样运行的工具
+
 日程：
 
 1⃣️实现API调用功能，创建GUI并支持此项目内的工具调用 ❌
@@ -26,6 +27,7 @@ There are Chinese and English versions, and the English version is below
 #English
 
 Using APIs for AI applications such as LLama, LMstudio, OpenAI's GPT, Google's Gemini, Midjourney, DELL3, or even deploying AI models directly on this project, create a tool that can run like Microsoft Copilot
+
 Schedule:
 
 1⃣️ Implement the API call function, create a GUI and support tool calls within this project ❌
