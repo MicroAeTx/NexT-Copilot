@@ -20,6 +20,33 @@ There are Chinese and English versions, and the English version is below
 ⑥打包为EXE
 
 
+#运行方法
+
+①安装必要的库
+  
+```python
+git clone https://github.com/MicroAeTx/NexT-Copilot.git
+
+cd NexT-Copilot
+
+python -m venv .venv
+
+cd .venv/Scripts
+
+./Activate.ps1
+
+python -m pip install requirements.txt
+```
+②
+
+```python
+python llm-chatbot.py
+```
+
+
+
+
+
 #English
 
 Using APIs for AI applications such as LLama, LMstudio, OpenAI's GPT, Google's Gemini, Midjourney, DELL3, or even deploying AI models directly on this project, create a tool that can run like Microsoft Copilot
@@ -37,3 +64,26 @@ Schedule:
 (5) Realize direct control of the computer on Windows
 
 (6) Package as EXE
+
+
+#Run method
+
+(1) Install the necessary libraries
+  
+```python
+git clone https://github.com/MicroAeTx/NexT-Copilot.git
+
+cd NexT-Copilot
+
+python -m venv .venv
+
+cd .venv/Scripts
+
+./Activate.ps1
+
+python -m pip install requirements.txt
+```
+(2)
+
+```python
+python llm-chatbot.py
