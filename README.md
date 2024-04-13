@@ -49,6 +49,9 @@ python -m pip install requirements.txt
 python llm-chatbot.py
 ```
 
+如果一切正常的话，命令窗口中将会返还一个链接，在浏览器中打开它即可运行
+
+注意⚠目前仅支持英特尔设备运行
 
 
 
@@ -100,3 +103,7 @@ Open the llm-chatbot.py, go to the second row, and set the absolute path of your
 ```python
 python llm-chatbot.py
 ```
+
+If everything is fine, a link will be returned to the command window, which can be opened in the browser and will be ready to run
+
+Note: ⚠ Only Intel devices are supported at this time
