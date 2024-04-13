@@ -41,11 +41,17 @@ cd .venv/Scripts
 python -m pip install requirements.txt
 ```
 ②
+将模型文件夹和llm-chatbot.py放在同一文件夹下
+
+打开llm-chatbot.py，转到第二行，设置你的模型的绝对路径
 
 ```python
 python llm-chatbot.py
 ```
 
+如果一切正常的话，命令窗口中将会返还一个链接，在浏览器中打开它即可运行
+
+注意⚠目前仅支持英特尔设备运行
 
 
 
@@ -71,7 +77,7 @@ Schedule:
 
 #Run method
 
-(1) Install the necessary libraries
+(1)
   
 ```python
 
@@ -90,7 +96,14 @@ cd .venv/Scripts
 python -m pip install requirements.txt
 ```
 (2)
+Place the model folder and llm-chatbot.py under the same folder
+
+Open the llm-chatbot.py, go to the second row, and set the absolute path of your model
 
 ```python
 python llm-chatbot.py
 ```
+
+If everything is fine, a link will be returned to the command window, which can be opened in the browser and will be ready to run
+
+Note: ⚠ Only Intel devices are supported at this time
