@@ -1,7 +1,7 @@
 # NexT-Copilot
 There are Chinese and English versions, and the English version is below
 
-#Chinese
+# Chinese
 
 使用例如LLama，LMstudio，OpenAI的GPT，谷歌的Gemini，Midjourney，DELL3这些AI应用的API甚至是直接在此项目上部署AI模型创建一个可以像Microsoft Copilot一样运行的工具
 
@@ -20,16 +20,20 @@ There are Chinese and English versions, and the English version is below
 ⑥打包为EXE
 
 
-#运行方法
+# 运行方法
 
 ①
-  
 ```python
-
-git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
-
 git clone https://github.com/MicroAeTx/NexT-Copilot.git
+```
 
+```python
+git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
+```
+
+将上一步下载的文件夹里的所有文件放置到  NexT-Copilot/minicpm-2b-dpo/INT8_compressed_weights中
+
+```python
 cd NexT-Copilot
 
 python -m venv .venv
@@ -41,7 +45,6 @@ cd .venv/Scripts
 python -m pip install requirements.txt
 ```
 ②
-将模型文件夹和llm-chatbot.py放在同一文件夹下
 
 打开llm-chatbot.py，转到第二行，设置你的模型的绝对路径
 
@@ -54,36 +57,30 @@ python llm-chatbot.py
 注意⚠目前仅支持英特尔设备运行
 
 
+# English
 
+Utilize APIs from AI applications such as LLama, LMstudio, OpenAI’s GPT, Google’s Gemini, Midjourney, DELL3, or even deploy AI models directly on this project to create a tool that can run like Microsoft Copilot.
 
-#English
+Agenda:
 
-Using APIs for AI applications such as LLama, LMstudio, OpenAI's GPT, Google's Gemini, Midjourney, DELL3, or even deploying AI models directly on this project, create a tool that can run like Microsoft Copilot
+① Create GUI and implement local language model invocation based on OpenVino ✅
 
-Schedule:
+② Implement language model invocation for the tool
 
-(1) Create a GUI and implement local language model calls  based on OpenVino ✅
+③ Integrate SDXL_TURBO large model
 
-(2) Implement the language model's invocation of tools
+④ Implement audio generation
 
-(3) Integrate SDXL_TURBO large models
+⑤ Implement direct control of the computer on Windows
 
-(4) Realize audio generation
+⑥ Package as EXE
 
-(5) Realize direct control of the computer on Windows
-
-(6) Package as EXE
-
-
-#Run method
-
-(1)
-  
-```python
-
-git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
+# How to Run
+①
 
 git clone https://github.com/MicroAeTx/NexT-Copilot.git
+git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
+Place all files from the downloaded folder into NexT-Copilot/minicpm-2b-dpo/INT8_compressed_weights.
 
 cd NexT-Copilot
 
@@ -94,16 +91,11 @@ cd .venv/Scripts
 ./Activate.ps1
 
 python -m pip install requirements.txt
-```
-(2)
-Place the model folder and llm-chatbot.py under the same folder
+②
 
-Open the llm-chatbot.py, go to the second row, and set the absolute path of your model
+Open llm-chatbot.py, go to the second line, and set the absolute path of your model.
 
-```python
 python llm-chatbot.py
-```
+If everything goes well, a link will be returned in the command window. Open it in your browser to run.
 
-If everything is fine, a link will be returned to the command window, which can be opened in the browser and will be ready to run
-
-Note: ⚠ Only Intel devices are supported at this time
+Note⚠ Currently only supports Intel devices.
