@@ -1,7 +1,5 @@
-#你可以自己定义的部分 #Your customizable section
-model_name_path = "F:\MiniCPM-2B-dpo-bf16"
-
-
+#你可以自己定义的部分(模型文件夹的绝对路径) #Your customizable section(absolute path to model folder)
+model_name_path = "F:\INT8_compressed_weights"
 
 
 from config import SUPPORTED_LLM_MODELS
@@ -12,29 +10,16 @@ model_language = input("#Chinese 你想要使用什么语言呢，English or Chi
 model_language
 model_ids = list(SUPPORTED_LLM_MODELS[model_language])
 
-model_id = widgets.Dropdown(
-    options=model_ids,
-    value=model_ids[0],
-    description="Model:",
-    disabled=False,
-)
-
 model_id = "minicpm-2b-dpo"
 model_configuration = SUPPORTED_LLM_MODELS[model_language][model_id]
 print(f"Selected model {model_id}")
-from transformers import AutoModelForCausalLM, AutoConfig
+from transformers import AutoConfig
 from optimum.intel.openvino import OVModelForCausalLM
-import openvino as ov
 from pathlib import Path
-import shutil
 import torch
-import logging
-import nncf
-import gc
-from converter import converters, register_configs
+from converter import register_configs
 
 register_configs()
-from IPython.display import display
 
 prepare_int8_model = widgets.Checkbox(
     value=False,
@@ -47,63 +32,22 @@ int8_model_dir = Path(model_id) / "INT8_compressed_weights"
 pt_model_name = model_id.split("-")[0]
 int8_weights = int8_model_dir / "openvino_model.bin"
 
-if int8_weights.exists():
-    print(f"Size of FP16 model is {int8_weights.stat().st_size / 1024 / 1024:.2f} MB")
-for precision, compressed_weights in zip([8, 4], [int8_weights, int8_weights]):
-    if compressed_weights.exists():
-        print(
-            f"Size of model with INT{precision} compressed weights is {compressed_weights.stat().st_size / 1024 / 1024:.2f} MB"
-        )
-    if compressed_weights.exists() and int8_weights.exists():
-        print(
-            f"Compression rate for INT{precision} model: {int8_weights.stat().st_size / compressed_weights.stat().st_size:.3f}"
-        )
-
-core = ov.Core()
-device = widgets.Dropdown(
-    options=core.available_devices + ["AUTO"],
-    value="CPU",
-    description="Device:",
-    disabled=False,
-)
-
 device = "GPU"
 
 from ov_llm_model import model_classes
 
 available_models = []
 if int8_model_dir.exists():
-    available_models.append("INT4")
-if int8_model_dir.exists():
     available_models.append("INT8")
-if int8_model_dir.exists():
-    available_models.append("FP16")
-
-model_to_run = widgets.Dropdown(
-    options=available_models,
-    value=available_models[0],
-    description="Model to run:",
-    disabled=False,
-)
 
 model_to_run = "int8"
 
 from transformers import AutoTokenizer
 
-if model_to_run == "INT4":
-    model_dir = int8_model_dir
-elif model_to_run == "INT8":
-    model_dir = int8_model_dir
-else:
-    model_dir = int8_model_dir
+model_dir = int8_model_dir
 print(f"Loading model from {model_dir}")
 
 ov_config = {"PERFORMANCE_HINT": "LATENCY", "NUM_STREAMS": "1", "CACHE_DIR": ""}
-
-# On a GPU device a model is executed in FP16 precision. For red-pajama-3b-chat model there known accuracy
-# issues caused by this, which we avoid by setting precision hint to "f32".
-if model_id == "red-pajama-3b-chat" and "GPU" in core.available_devices and device in ["GPU", "AUTO"]:
-    ov_config["INFERENCE_PRECISION_HINT"] = "f32"
 
 model_name = model_name_path
 class_key = model_id.split("-")[0]
@@ -163,21 +107,11 @@ english_examples = [
     ],
 ]
 
-japanese_examples = [
-    ["こんにちは！調子はどうですか?"],
-    ["OpenVINOとは何ですか?"],
-    ["あなたは誰ですか?"],
-    ["Pythonプログラミング言語とは何か簡単に説明してもらえますか?"],
-    ["シンデレラのあらすじを一文で説明してください。"],
-    ["コードを書くときに避けるべきよくある間違いは何ですか?"],
-    ["人工知能と「OpenVINOの利点」について100語程度のブログ記事を書いてください。"],
-]
-
 examples = (
     chinese_examples
     if (model_language == "Chinese")
-    else japanese_examples
-    if (model_language == "Japanese")
+    else english_examples
+    if (model_language == "English")
     else english_examples
 )
 
@@ -309,7 +243,7 @@ def bot(history, temperature, top_p, top_k, repetition_penalty, conversation_id)
     # Construct the input message string for the model by concatenating the current system message and conversation history
     # Tokenize the messages string
     input_ids = convert_history_to_token(history)
-    if input_ids.shape[1] > 2000:
+    if input_ids.shape[1] > 4096:
         history = [history[-1]]
         input_ids = convert_history_to_token(history)
     streamer = TextIteratorStreamer(
