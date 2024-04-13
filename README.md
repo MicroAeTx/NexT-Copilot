@@ -22,9 +22,12 @@ There are Chinese and English versions, and the English version is below
 
 #运行方法
 
-①安装必要的库
+①
   
 ```python
+
+git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
+
 git clone https://github.com/MicroAeTx/NexT-Copilot.git
 
 cd NexT-Copilot
@@ -71,6 +74,9 @@ Schedule:
 (1) Install the necessary libraries
   
 ```python
+
+git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
+
 git clone https://github.com/MicroAeTx/NexT-Copilot.git
 
 cd NexT-Copilot
@@ -87,3 +93,4 @@ python -m pip install requirements.txt
 
 ```python
 python llm-chatbot.py
+```
