@@ -33,7 +33,7 @@ git clone https://github.com/MicroAeTx/NexT-Copilot.git
 git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
 ```
 
-将上一步下载的文件夹里的所有文件放置到  NexT-Copilot/minicpm-2b-dpo/INT8_compressed_weights中
+将这一步下载的文件夹里的所有文件放置到  NexT-Copilot/minicpm-2b-dpo/INT8_compressed_weights中
 
 ③
 
