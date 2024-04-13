@@ -23,15 +23,19 @@ There are Chinese and English versions, and the English version is below
 # 运行方法
 
 ①
+
 ```python
 git clone https://github.com/MicroAeTx/NexT-Copilot.git
 ```
+②
 
 ```python
 git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
 ```
 
 将上一步下载的文件夹里的所有文件放置到  NexT-Copilot/minicpm-2b-dpo/INT8_compressed_weights中
+
+③
 
 ```python
 cd NexT-Copilot
@@ -44,7 +48,8 @@ cd .venv/Scripts
 
 python -m pip install requirements.txt
 ```
-②
+
+④
 
 打开llm-chatbot.py，转到第二行，设置你的模型的绝对路径
 
@@ -76,12 +81,22 @@ Agenda:
 ⑥ Package as EXE
 
 # How to Run
+
 ①
 
+```python
 git clone https://github.com/MicroAeTx/NexT-Copilot.git
+```
+②
+
+```python
 git clone https://www.modelscope.cn/fuzirui/MiniCPM-2B-OpenVino-int8.git
+```
 Place all files from the downloaded folder into NexT-Copilot/minicpm-2b-dpo/INT8_compressed_weights.
 
+③
+
+```python
 cd NexT-Copilot
 
 python -m venv .venv
@@ -90,12 +105,16 @@ cd .venv/Scripts
 
 ./Activate.ps1
 
-python -m pip install requirements.txt
-②
+python -m pip install -r requirements.txt
+```
+④
 
 Open llm-chatbot.py, go to the second line, and set the absolute path of your model.
 
+```python
 python llm-chatbot.py
+```
+
 If everything goes well, a link will be returned in the command window. Open it in your browser to run.
 
 Note⚠ Currently only supports Intel devices.
