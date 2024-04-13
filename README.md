@@ -46,7 +46,7 @@ cd .venv/Scripts
 
 ./Activate.ps1
 
-python -m pip install requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ④
