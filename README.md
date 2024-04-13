@@ -41,6 +41,9 @@ cd .venv/Scripts
 python -m pip install requirements.txt
 ```
 ②
+将模型文件夹和llm-chatbot.py放在同一文件夹下
+
+打开llm-chatbot.py，转到第二行，设置你的模型的绝对路径
 
 ```python
 python llm-chatbot.py
@@ -90,6 +93,9 @@ cd .venv/Scripts
 python -m pip install requirements.txt
 ```
 (2)
+Place the model folder and llm-chatbot.py under the same folder
+
+Open the llm-chatbot.py, go to the second row, and set the absolute path of your model
 
 ```python
 python llm-chatbot.py
