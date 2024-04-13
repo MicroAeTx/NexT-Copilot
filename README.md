@@ -77,7 +77,7 @@ Schedule:
 
 #Run method
 
-(1) Install the necessary libraries
+(1)
   
 ```python
 
