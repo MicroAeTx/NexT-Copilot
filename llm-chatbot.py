@@ -301,7 +301,7 @@ with gr.Blocks(
 ) as demo:
     conversation_id = gr.State(get_uuid)
     gr.Markdown(
-        f"""<h1><center>OpenVINO {model_id} Chatbot</center></h1>""")
+        f"""<h1><center>NexT-Copilot {model_id} Chatbot</center></h1>""")
     chatbot = gr.Chatbot(height=500)
     with gr.Row():
         with gr.Column():
